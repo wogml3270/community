@@ -3,13 +3,14 @@
 <mapper namespace="com.koreait.community.board.BoardMapper">
     <insert id="insBoard">
         INSERT INTO t_board
-        (icatecory, title, ctnt, iuser)
+            (icategory, title, ctnt, iuser)
         VALUES
-        (${icatecory}, #{title}, #{ctnt}, #{iuser})
+            (${icategory}, #{title}, #{ctnt}, ${iuser})
     </insert>
+
     <select id="selBoardList" resultType="BoardVO">
         SELECT A.iboard, A.title, A.iuser, A.hits, A.rdt
-            , B.nm, as writernm, B.profileimg
+             , B.nm as writernm, B.profileimg
         FROM t_board A
         LEFT JOIN t_user B
         ON A.iuser = B.iuser

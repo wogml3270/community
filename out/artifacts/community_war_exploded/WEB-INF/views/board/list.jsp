@@ -1,6 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <div>
     <c:if test="${sessionScope.loginUser != null}">
         <a href="/board/write?icategory=${requestScope.icategory}">글쓰기</a>
@@ -21,9 +21,9 @@
                         <th>reg date</th>
                     </tr>
                     <c:forEach items="${requestScope.list}" var="item">
-                        <tr>
+                        <tr class="record" data-iboard="${item.iboard}">
                             <td>${item.iboard}</td>
-                            <td><c:out value="${item.title}"></td>
+                            <td><c:out value="${item.title}"/></td>
                             <td>${item.hits}</td>
                             <td>${item.writernm}</td>
                             <td>${item.rdt}</td>

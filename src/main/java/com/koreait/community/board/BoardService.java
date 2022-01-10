@@ -19,7 +19,7 @@ public class BoardService {
 
     public int insBoard(BoardEntity entity){
         entity.setIuser(userUtils.getLoginUserPk());
-        return 0;
+        return mapper.insBoard(entity);
     }
 
     public List<BoardVO> selBoardList(BoardDTO dto){
