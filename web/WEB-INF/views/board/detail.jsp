@@ -8,7 +8,7 @@
 </c:if>
 <div id="data" data-icategory="${data.icategory}" data-iboard="${data.iboard}"></div>
 <div>
-    <div>${data.categorynm}</div>
+    <div>카테고리: ${data.categorynm}</div>
     <div>조회수: ${data.hits}</div>
     <div>등록일시: ${data.rdt}</div>
     <div>글쓴이: ${data.writernm}</div>

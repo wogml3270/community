@@ -8,6 +8,7 @@ public class Const {
     public static final String LIST = "list";
     public static final String I_CATEGORY = "icategory";
     public static final String DATA = "data";
+    public static final String IP_FORWARD = "X-FORWARDED-FOR";
 
     public static final String ERR_A = "알 수 없는 에러가 발생했습니다.";
     public static final String ERR_ID = "아이디를 확인해주세요.";

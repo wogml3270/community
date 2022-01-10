@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -41,7 +42,10 @@ public class UserController {
     }
 
     @GetMapping(value="/logout")
-    public void logout(){}
+    public String logout(HttpSession hs){
+        hs.invalidate();
+        return "redirect:/user/login";
+    }
 
     @GetMapping(value="/join")
     public void join() {}

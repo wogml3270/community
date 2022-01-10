@@ -19,6 +19,8 @@ public class BoardController {
     @Autowired
     private BoardService service;
 
+    @GetMapping(value="/list")
+    public void list(){}
 
     @GetMapping("/list/{icategory}")
     public String list(@PathVariable int icategory, BoardDTO dto, Model model) {
@@ -39,11 +41,10 @@ public class BoardController {
 
     @GetMapping(value="/detail")
     public void detail(BoardDTO dto, Model model, HttpServletRequest req){
-        String lastIp = req.getHeader("X-FORWARDED-FOR");
+        String lastIp = req.getHeader(Const.IP_FORWARD);
         if(lastIp == null){
             lastIp = req.getRemoteAddr();
         }
-        System.out.println(lastIp);
         dto.setLastip(lastIp);
         model.addAttribute(Const.DATA, service.selBoard(dto));
     }
