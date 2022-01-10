@@ -17,5 +17,6 @@ public class BoardEntity {
     private int isdel;
     private String rdt;
     private String mdt;
+    private String lastip;
 }
 

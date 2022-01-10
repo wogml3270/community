@@ -40,6 +40,9 @@ public class UserController {
         return "redirect:/board/list";
     }
 
+    @GetMapping(value="/logout")
+    public void logout(){}
+
     @GetMapping(value="/join")
     public void join() {}
 

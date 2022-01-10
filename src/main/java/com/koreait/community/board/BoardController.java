@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping(value="/board")
 public class BoardController {
     @Autowired
     private BoardService service;
+
 
     @GetMapping("/list/{icategory}")
     public String list(@PathVariable int icategory, BoardDTO dto, Model model) {
@@ -34,6 +37,20 @@ public class BoardController {
         return "redirect:/board/list/" + entity.getIcategory();
     }
 
+    @GetMapping(value="/detail")
+    public void detail(BoardDTO dto, Model model, HttpServletRequest req){
+        String lastIp = req.getHeader("X-FORWARDED-FOR");
+        if(lastIp == null){
+            lastIp = req.getRemoteAddr();
+        }
+        System.out.println(lastIp);
+        dto.setLastip(lastIp);
+        model.addAttribute(Const.DATA, service.selBoard(dto));
+    }
 
-
+    @GetMapping(value="/del")
+    public String delProc(BoardEntity entity){
+        int result = service.delBoard(entity);
+        return "redirect:/board/list/" + entity.getIcategory();
+    }
 }

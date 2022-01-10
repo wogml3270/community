@@ -8,4 +8,5 @@ import lombok.Setter;
 public class BoardVO extends BoardEntity{
     private String writernm;
     private String profileimg;
+    private String categorynm;
 }
