@@ -3,8 +3,8 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <div class="flex-container flex-center flex-direction-column">
     <h1 id="login_title">로그인</h1>
-    <div>${requestScope.msg}</div>
     <form action="/user/login" method="post" id="loginFrm">
+        <div style="color: red; font-weight: bold;">${requestScope.msg}</div>
         <div class="id_wrap">
             <input type="text" name="uid" placeholder="아이디 입력" value="${requestScope.tryLogin.uid}">
         </div>

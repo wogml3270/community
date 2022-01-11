@@ -1,9 +1,6 @@
-#login_title{
-    color: #468c21;
-}
-#loginFrm{
-    padding: 100px;
-}
+#loginFrm{ padding: 100px; }
+#login_title{ color: #468c21; }
+
 .id_wrap{ margin-bottom: 10px; }
 #loginFrm input[type=text],
 #loginFrm input[type=password]{
@@ -20,7 +17,7 @@
     border: none;
     padding: 5px;
     border-radius: 7px;
-    background: #00ccaa;
-    color: #fff;
+    background-color: #00ccaa;
+    color: #ffffff;
     cursor: pointer;
 }

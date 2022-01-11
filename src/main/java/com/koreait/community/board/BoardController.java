@@ -52,7 +52,7 @@ public class BoardController {
 
     @GetMapping(value="/mod")
     public String mod(BoardDTO dto, Model model){
-        model.addAttribute(Const.DATA, service.selBoardList(dto));
+        model.addAttribute(Const.DATA, service.selBoard(dto));
         return "board/write";
     }
 

@@ -5,6 +5,7 @@ import com.koreait.community.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -68,5 +69,14 @@ public class UserController {
         Map<String, Integer> res = new HashMap();
         res.put("result", service.idChk(uid));
         return res;
+    }
+
+    @GetMapping(value="/mypage/profile")
+    public void profile(){}
+
+    @PostMapping(value="/mypage/profile")
+    public String mypageProfile(MultipartFile profileimg){
+        System.out.println("fileName : " + profileimg.getOriginalFilename());
+        return "fucking";
     }
 }

@@ -1,3 +1,37 @@
-h1{
-    color: chocolate;
+#joinFrm{ padding: 100px; }
+#join_title{ color: #468c21; }
+
+#joinFrm input{ margin-bottom: 10px; }
+#joinFrm input[type="text"],
+#joinFrm input[type="password"]{
+    width: 350px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #00cccc;
+}
+#idChkBtn{
+    position: absolute;
+    right: 0;
+    font-size: 13px;
+    border: none;
+    margin: 1px;
+    padding: 13px;
+    border-radius: 5px;
+    background-color: #00ccaa;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #888888;
+}
+#idChkBtn:hover{ background-color: #4f4f4f; }
+#joinFrm input[type="submit"],
+#joinFrm input[type="reset"]{
+    font-size: 15px;
+    margin: 20px 0;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    background-color: #00ccaa;
+    color: #ffffff;
+    cursor: pointer;
 }

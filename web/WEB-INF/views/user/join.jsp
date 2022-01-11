@@ -2,10 +2,10 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <div class="flex-container flex-center flex-direction-column">
+    <h1 id="join_title">회원가입 페이지</h1>
     <form action="/user/join" method="post" id="joinFrm">
-        <h1>회원가입 페이지</h1>
         <div>${requestScope.msg}</div>
-        <div>
+        <div style="position: relative;">
             <label><input type="text" name="uid" maxlength="15" placeholder="아이디 입력" required></label>
             <input type="button" value="중복 확인" id="idChkBtn"><span id="idChkMsg"></span>
         </div>

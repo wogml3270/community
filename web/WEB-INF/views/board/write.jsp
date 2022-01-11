@@ -19,7 +19,7 @@
         <input type="hidden" name="iboard" value="${iboardVal}">
         <input type="hidden" name="icategory" value="${icategoryVal}">
         <div>
-            <label><input type="text" name="title" value="<c:out value='${requestScope.data.title}'/>" placeholder="제목"></label>
+            <label><input type="text" name="title" placeholder="제목" value="<c:out value='${requestScope.data.title}'/>"></label>
         </div>
         <div>
             <label><textarea name="ctnt" placeholder="내용"><c:out value="${requestScope.data.ctnt}"/></textarea></label>
