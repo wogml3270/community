@@ -33,6 +33,7 @@
     <update id="addHits">
         UPDATE t_board
         SET hits = hits + 1
+        , lastip = #{lastip}
         WHERE iboard = ${iboard}
     </update>
     <update id="updBoard">
@@ -44,16 +45,11 @@
             <if test=" ctnt != null and ctnt != '' ">
                 ctnt = #{ctnt},
             </if>
-            <if test=" lastip != null and lastip != '' ">
-                lastip = #{lastip},
-            </if>
             <if test=" isdel == 1 ">
                 isdel = 1
             </if>
         </set>
         WHERE iboard = ${iboard}
-        <if test=" lastip == null ">
-            AND iuser = ${iuser}
-        </if>
+        AND iuser = ${iuser}
     </update>
 </mapper>

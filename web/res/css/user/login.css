@@ -1,3 +1,26 @@
-h1{
+#login_title{
     color: #468c21;
+}
+#loginFrm{
+    padding: 100px;
+}
+.id_wrap{ margin-bottom: 10px; }
+#loginFrm input[type=text],
+#loginFrm input[type=password]{
+    width: 350px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #00cccc;
+}
+#loginFrm input[type=submit],
+#loginFrm input[type=button]{
+    font-size: 15px;
+    margin: 20px 0;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    background: #00ccaa;
+    color: #fff;
+    cursor: pointer;
 }

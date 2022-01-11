@@ -1,9 +1,9 @@
 let idChkState = 2; // 0: 아이디 사용 불가능, 1: 아이디 사용 가능, 2: 체크안함
 const joinFrmElem = document.querySelector('#joinFrm');
 const idChkMsg = joinFrmElem.querySelector('#idChkMsg');
-const idRegex = /^([a-z A-Z 0-9]{4,15})$/; // 대소문자 + 숫자 조합으로 4~15 글자인 경우만 ok
-const pwRegex = /^([a-z A-Z 0-9 !@%^_]{4,20})$/; // 대소문자 + 숫자 + !@%^_ 조합으로 4~20글자인 경우만 ok
-const krNmRegex = /^([가-힣]{2,5})$/; // 이름은 한글로 2~5글자 조합인경우만 ok
+const idRegex = /^([a-z A-Z 0-9]{4,15})$/; // 대소문자 + 숫자 조합으로 4~15 글자인 경우
+const pwRegex = /^([a-z A-Z 0-9 !@%^_]{4,20})$/; // 대소문자 + 숫자 + !@%^_ 조합으로 4~20글자인 경우
+const krNmRegex = /^([가-힣]{2,5})$/; // 이름은 한글로 2~5글자 조합인경우
 const msg1 = '아이디는 영문 대소문자, 숫자 조합 4~15글자가 되어야합니다.';
 const msg2 = '비밀번호는 대소문자, 숫자, 특수문자(!, @, %, ^, _) 조합으로 4~20글자가 되어야합니다.';
 const msg3 = '이름은 한글로 2~5글자가 되어야합니다.';

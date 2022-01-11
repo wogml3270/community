@@ -1,6 +1,7 @@
 package com.koreait.community.board;
 
 import com.koreait.community.Const;
+import com.koreait.community.UserUtils;
 import com.koreait.community.board.model.BoardDTO;
 import com.koreait.community.board.model.BoardEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,18 @@ public class BoardController {
         }
         dto.setLastip(lastIp);
         model.addAttribute(Const.DATA, service.selBoard(dto));
+    }
+
+    @GetMapping(value="/mod")
+    public String mod(BoardDTO dto, Model model){
+        model.addAttribute(Const.DATA, service.selBoardList(dto));
+        return "board/write";
+    }
+
+    @PostMapping(value="/mod")
+    public String modProc(BoardEntity entity){
+        int result = service.updBoard(entity);
+        return "redirect:/board/detail?iboard=" + entity.getIboard();
     }
 
     @GetMapping(value="/del")
