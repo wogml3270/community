@@ -5,9 +5,12 @@
 <c:if test="${sessionScope.loginUser.profileimg != null}">
     <c:set var="profileImg" value="/images/user/${sessionScope.loginUser.iuser}/${sessionScope.loginUser.profileimg}"/>
 </c:if>
-<h1>프로필 정보</h1>
+<div id="data" data-iuser="${sessionScope.loginUser.iuser}"></div>
 <div class="flex-direction-column flex-container flex-center">
-    <div id="profile_view" class="circular_img circular_size300 pointer"><img src="${profileImg}"></div>
+    <h1 id="profile_title">프로필 정보</h1>
+    <div id="profile_view" class="circular_img circular_change size300 pointer">
+        <img src="${profileImg}">
+    </div>
     <input type="file" id="profile_file" class="hidden" accept="image/*">
     <div>아이디: ${sessionScope.loginUser.uid}</div>
     <div>이름: ${sessionScope.loginUser.nm}</div>

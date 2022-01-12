@@ -1,7 +1,7 @@
 {
-    // TODO 프로필 이미지 클릭 이벤트
     const profileViewElem = document.querySelector('#profile_view');
     const profileFileElem = document.querySelector('#profile_file');
+    const dataElem = document.querySelector('#data');
 
     if(profileFileElem){
         profileFileElem.addEventListener('change', ()=>{
@@ -11,6 +11,7 @@
             }
         });
     }
+    // TODO 프로필 이미지 클릭 이벤트
     if(profileViewElem){
         profileViewElem.addEventListener('click', () =>{
             if(profileFileElem){
@@ -31,9 +32,16 @@
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                setProfileImg(data);
         })
             .catch(e =>{
                 console.log(e);
             });
+    }
+    const setProfileImg = (data) =>{
+        if(!data.result){ return; }
+        const iuser = dataElem.dataset.iuser;
+        const img = profileViewElem.querySelector('img');
+        img.src = `/images/user/${iuser}/${data.result}`;
     }
 }

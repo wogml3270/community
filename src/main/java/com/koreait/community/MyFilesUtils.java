@@ -32,6 +32,12 @@ public class MyFilesUtils {
             file.delete();
         }
     }
+    public void delFile(String path){
+        File f = new File(path);
+        if(f.exists()){
+            f.delete();
+        }
+    }
 
     // 랜덤파일명 만들기
     public String getRandomFileNm(){
@@ -55,6 +61,7 @@ public class MyFilesUtils {
             mf.transferTo(targetFile);
         }catch(Exception e){
             e.printStackTrace();
+            return null;
         }
         return randomFileNm;
     }

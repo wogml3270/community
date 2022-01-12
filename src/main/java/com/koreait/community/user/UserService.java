@@ -64,20 +64,28 @@ public class UserService {
         if(mf == null){
             return null;
         }
-        final String PATH = Const.UPLOAD_IMG_PATH + "/user/" + userUtils.getLoginUserPk();
+        UserEntity loginUser = userUtils.getLoginUser();
+
+        final String PATH = Const.UPLOAD_IMG_PATH + "/user/" + loginUser.getIuser();
         String fileNm = myFilesUtils.saveFile(PATH, mf);
         System.out.println(fileNm);
 
         if(fileNm == null){
             return null;
         }
-        // 파일명을 t_user 테이블에 update
         UserEntity entity = new UserEntity();
-        entity.setIuser(userUtils.getLoginUserPk());
-        entity.setProfileimg((fileNm));
+        entity.setIuser(loginUser.getIuser());
 
+        // 기존 파일명
+        String oldFilePath = PATH + "/" + loginUser.getProfileimg();
+        myFilesUtils.delFile(oldFilePath);
+
+        // 파일명을 t_user 테이블에 update
+        entity.setProfileimg(fileNm);
         mapper.updUser(entity);
 
+        // 세션 프로필 파일명을 수정해 준다.
+        loginUser.setProfileimg(fileNm);
         return fileNm;
     }
 }
