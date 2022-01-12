@@ -13,7 +13,6 @@ public class MenuPreparer implements ViewPreparer {
     private CommonMapper mapper;
     @Override
     public void execute(Request request, AttributeContext attributeContext) {
-        System.out.println(" --- Called MenuPreparer-execute method --- ");
         attributeContext.putAttribute(Const.MENU_LIST,
                 new Attribute(mapper.selMenuCategoryList()), true);
     }

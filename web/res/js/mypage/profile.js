@@ -16,12 +16,14 @@
             if(profileFileElem){
                 profileFileElem.click();
             }
+            console.log('ddd')
         });
     }
 
     const uploadProfileImg = (img) => {
         const fData = new FormData();
-        Fdata.append('profileimg', img);
+        fData.append('profileimg', img);
+
         fetch('/user/mypage/profile',{
             'method': 'post',
             'body': fData
@@ -30,7 +32,7 @@
             .then(data => {
                 console.log(data);
         })
-            .catch((e) =>{
+            .catch(e =>{
                 console.log(e);
             });
     }

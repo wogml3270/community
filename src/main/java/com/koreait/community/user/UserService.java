@@ -1,20 +1,24 @@
 package com.koreait.community.user;
 
+import com.koreait.community.Const;
+import com.koreait.community.MyFilesUtils;
 import com.koreait.community.UserUtils;
 import com.koreait.community.user.model.UserEntity;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Service
 public class UserService {
     @Autowired
     private UserMapper mapper;
-
     @Autowired
     private UserUtils userUtils;
+    @Autowired
+    private MyFilesUtils myFilesUtils;
 
     public int login(UserEntity entity){
         UserEntity dbUser = null;
@@ -54,5 +58,26 @@ public class UserService {
         UserEntity result = mapper.selUser(entity);
 
         return result == null ? 1 : 0;
+    }
+    // 이미지 업로드 처리 및 저장 path 리턴
+    public String uploadProfileImg(MultipartFile mf){
+        if(mf == null){
+            return null;
+        }
+        final String PATH = Const.UPLOAD_IMG_PATH + "/user/" + userUtils.getLoginUserPk();
+        String fileNm = myFilesUtils.saveFile(PATH, mf);
+        System.out.println(fileNm);
+
+        if(fileNm == null){
+            return null;
+        }
+        // 파일명을 t_user 테이블에 update
+        UserEntity entity = new UserEntity();
+        entity.setIuser(userUtils.getLoginUserPk());
+        entity.setProfileimg((fileNm));
+
+        mapper.updUser(entity);
+
+        return fileNm;
     }
 }
