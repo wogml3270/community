@@ -14,9 +14,9 @@ th, td { padding: 7px; }
 
 .circular_img { display: inline-block; overflow: hidden; border-radius: 50%; border: 1px solid #ffffff; position: relative; }
 .circular_img img { width: 105%; height: 105%; object-fit: cover; }
-.circular_change:hover{ opacity: 0.5; transition: 0.3s; }
+.circular_change:hover{ opacity: 0.75; transition: 0.3s; }
 .circular_change:hover::after{
-    content: "사진 변경"; z-index: 1; position: absolute; top: 120px; left: 100px;
+    content: "사진 변경"; z-index: 1; position: absolute; top: 120px; left: 110px;
     font-size: 24px; color: #8a8a8a; font-weight: 100; font-family: 'Stylish', sans-serif;
 }
 

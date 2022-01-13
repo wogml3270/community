@@ -9,6 +9,7 @@
     const msg2 = '비밀번호는 대소문자, 숫자, 특수문자(!, @, %, ^, _) 조합으로 4~20글자가 되어야합니다.';
     const msg3 = '이름은 한글로 2~5글자가 되어야합니다.';
     const msg4 = '비밀번호를 확인해주세요.';
+    const msg5 = '성별을 체크해주세요.';
 
 // 아이디 중복체크 했을 시 뜨는 문구 함수
     const setIdChkMsg = (data) => {
@@ -33,6 +34,7 @@
             const upw = joinFrmElem.upw.value;
             const nm = joinFrmElem.nm.value;
             const upwChk = joinFrmElem.upwChk.value;
+            const gender = joinFrmElem.gender;
             if (!idRegex.test(uid)) {
                 alert(msg1);
                 e.preventDefault();
@@ -44,6 +46,9 @@
                 e.preventDefault();
             } else if (upw !== upwChk) {
                 alert(msg4);
+                e.preventDefault();
+            }else if(gender === null){
+                alert(msg5);
                 e.preventDefault();
             }
             if (idChkState !== 1) {
