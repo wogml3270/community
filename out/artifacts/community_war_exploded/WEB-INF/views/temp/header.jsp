@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="my" uri="tld/MyCustomJstlTag.tld" %>
+
 <tiles:importAttribute name="menuList"/>
 <c:set var="currentPagePath" value="${requestScope['javax.servlet.forward.request_uri']}" />
 <c:set var="splitURI" value="${fn:split(currentPagePath, '/')}"/>
@@ -17,8 +19,14 @@
                 <div class="m-r-20"><a href="/user/login" class="font-color-white">로그인</a></div>
             </c:when>
             <c:otherwise>
-                <div class="m-r-20 circular_img size40"><img src="${profileImg}"></div>
-                <div class="m-r-20"><a href="/user/mypage/profile" class="font-color-white">마이페이지</a></div>
+                <div class="m-r-20">
+                    <a href="/user/mypage/profile">
+                        <my:profileImg classVal="circular_img size40"
+                                       iuser="${sessionScope.loginUser.iuser}"
+                                       imgIdVal="header-profileimg"
+                                       profileImgVal="${sessionScope.loginUser.profileimg}"/>
+                    </a>
+                </div>
                 <div class="m-r-20"><a href="/user/logout" class="font-color-white">로그아웃</a></div>
             </c:otherwise>
         </c:choose>

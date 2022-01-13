@@ -13,7 +13,7 @@
         <div><label><input type="password" id="upwChk" placeholder="비밀번호 확인" required></label></div>
         <div><label><input type="text" name="nm" placeholder="이름 입력" required></label></div>
         <div>
-            <label>남성 <input type="radio" name="gender" value="1" checked></label>
+            <label>남성 <input type="radio" name="gender" value="1"></label>
             <label>여성 <input type="radio" name="gender" value="2"></label>
         </div>
         <div>

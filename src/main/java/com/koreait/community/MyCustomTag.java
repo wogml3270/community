@@ -2,7 +2,7 @@ package com.koreait.community;
 
 public class MyCustomTag {
     public static String profileImg(String idVal, String classVal, String profileImgVal){
-        String fixProfileImgVal = "/res/img/default_img.png";
+        String fixProfileImgVal = "/res/img/defaultProfile.png";
         if(profileImgVal != null){
             fixProfileImgVal = "/images/user";
         }
