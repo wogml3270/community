@@ -1,13 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<tiles:importAttribute name="subMenuList"/>
+<c:set var="currentPagePath" value="${requestScope['javax.servlet.forward.request_uri']}" />
+<c:set var="splitURI" value="${fn:split(currentPagePath, '/')}"/>
+<c:set var="lastPath" value="${splitURI[fn:length(splitURI) - 1]}"/>
 <div class="submenu_section">
-    <div class="p-10 submenu_section_wrap">
+    <div class="p-30 submenu_section_wrap">
         <ul>
-            <li><a href="">프로필</a></li>
-            <li><a href="">비밀번호변경</a></li>
+            <c:forEach items="${subMenuList}" var="item">
+                <c:set var="className" value="${item.href == lastPath ? 'submenu-selected' : ''}" />
+                <li class="p-lr-10 ${className}"><a href="/user/mypage/${item.href}">${item.nm}</a></li>
+            </c:forEach>
         </ul>
     </div>
-    <div>
+    <div class="p-10">
         <tiles:insertAttribute name="content" />
     </div>
 </div>

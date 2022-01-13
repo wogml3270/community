@@ -21,7 +21,7 @@
         </attribute>
         <attribute>
             <name>iuser</name>
-            <required>false</required>
+            <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>

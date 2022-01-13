@@ -1,9 +1,11 @@
 package com.koreait.community.user;
 
 import com.koreait.community.Const;
+import com.koreait.community.user.model.UserDTO;
 import com.koreait.community.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,7 +21,10 @@ public class UserController {
     private UserService service;
 
     @GetMapping(value="/login")
-    public void login() {}
+    public void login(Model model) {
+        model.addAttribute("title", "로그인");
+        model.addAttribute("b_title", "b_로그인");
+    }
 
     @PostMapping(value="/login")
     public String loginProc(UserEntity entity, RedirectAttributes reAttr) {
@@ -81,5 +86,26 @@ public class UserController {
         Map<String, String> result = new HashMap<>();
         result.put("result", fileNm);
         return result;
+    }
+
+    @GetMapping(value="/mypage/password")
+    public void password(){}
+
+    @PostMapping(value="/mypage/password")
+    public String passwordProc(UserDTO dto, HttpSession hs, RedirectAttributes attr){
+        int result = service.changePassword(dto);
+        if(result != 1){
+            switch(result){
+                case 0:
+                    attr.addFlashAttribute(Const.MSG, "비밀번호 변경에 실패하였습니다.");
+                    break;
+                case 2:
+                    attr.addFlashAttribute(Const.MSG, "현재 비밀번호를 확인해주세요.");
+                    break;
+            }
+            return "redirect:/user/mypage/password";
+        }
+        hs.invalidate();
+        return "redirect:/user/logout";
     }
 }

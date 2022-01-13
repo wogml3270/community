@@ -10,14 +10,16 @@
 
     <select id="selUser" resultType="UserEntity">
         SELECT * FROM t_user
-        WHERE uid = #{uid}
+        WHERE
+        <if test=" uid != null and uid != '' "> uid = #{uid} </if>
+        <if test=" iuser > 0 "> iuser = ${iuser} </if>
     </select>
 
     <update id="updUser">
         UPDATE t_user
         SET
         <if test=" upw != null and upw != '' ">
-            upw = #{upw},
+            upw = #{upw}
         </if>
         <if test=" profileimg != null and profileimg != '' ">
             profileimg = #{profileimg}
