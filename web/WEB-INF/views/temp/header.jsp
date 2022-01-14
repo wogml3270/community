@@ -12,7 +12,7 @@
 <c:if test="${sessionScope.loginUser.profileimg != null}">
     <c:set var="profileImg" value="/images/user/${sessionScope.loginUser.iuser}/${sessionScope.loginUser.profileimg}"/>
 </c:if>
-<header class="h-50">
+<header class="h-100">
     <div class="flex-container flex-align-center p-lr-20">
         <c:choose>
             <c:when test="${sessionScope.loginUser == null}">
@@ -31,7 +31,7 @@
             </c:otherwise>
         </c:choose>
         <c:forEach items="${menuList}" var="item">
-            <div class="m-r-20 ${lastPath == ''.concat(item.icategory) ? 'menu-selected' : ''}">
+            <div class="m-r-30 ${lastPath == ''.concat(item.icategory) ? 'menu-selected' : ''}">
                 <a href="/board/list/${item.icategory}" class="font-color-white">${item.nm}</a>
             </div>
         </c:forEach>

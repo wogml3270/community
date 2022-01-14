@@ -1,8 +1,12 @@
+window.onbeforeunload = function(){
+    return "!!";
+}
+
 {
-    // TODO data 버튼
+    // data 버튼
     const dataElem = document.querySelector('#data');
 
-    // TODO 삭제 버튼 클릭 시 이벤트
+    // 삭제 버튼 클릭 시 이벤트
     const delBtnElem = document.querySelector('#delBtn');
     if(delBtnElem){
         delBtnElem.addEventListener('click', () => {
@@ -15,7 +19,7 @@
         });
     }
 
-    // TODO 수정 버튼 클릭 시 이벤트
+    // 수정 버튼 클릭 시 이벤트
     const modBtnElem = document.querySelector('#modBtn');
     if(modBtnElem){
         modBtnElem.addEventListener('click', ()=>{

@@ -15,4 +15,12 @@
     <div>제목: <c:out value="${data.title}" /></div>
     <hr>
     <div><c:out value="${data.ctnt}" /></div>
+    <div>
+        <c:if test="${requestScope.prevNext.previboard > 0}">
+            <a href="/board/detail?iboard=${requestScope.prevNext.previboard}"><button>이전글</button></a>
+        </c:if>
+        <c:if test="${requestScope.prevNext.nextiboard > 0}">
+            <a href="/board/detail?iboard=${requestScope.prevNext.nextiboard}"><button>다음글</button></a>
+        </c:if>
+    </div>
 </div>
