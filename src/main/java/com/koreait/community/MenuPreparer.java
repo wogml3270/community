@@ -26,7 +26,6 @@ public class MenuPreparer implements ViewPreparer {
         if(menuList == null){
             menuList = mapper.selMenuCategoryList();
         }
-        System.out.println(" ------- Called MenuPreparer-execute method --------- ");
         attributeContext.putAttribute(Const.MENU_LIST,
                 new Attribute(mapper.selMenuCategoryList()), true);
         if(subMenuList == null) {

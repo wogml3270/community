@@ -1,7 +1,3 @@
-window.onbeforeunload = function(){
-    return "!!";
-}
-
 {
     // data 버튼
     const dataElem = document.querySelector('#data');
@@ -27,4 +23,36 @@ window.onbeforeunload = function(){
             location.href = `/board/mod?iboard=${iboard}`;
         })
     }
+    // cmt
+    const cmtFrmElem = document.querySelector('#cmtFrm');
+    if(cmtFrmElem){ // true: 로그인 한 상태
+
+        // input-text ctnt에서 enter 치면 submit 날아가기 때문에 막는다
+        cmtFrmElem.addEventListener('submit', (e)=>{
+            e.preventDefault();
+        });
+
+        cmtFrmElem.btn_submit.addEventListener('click', () =>{
+            const cmtVal = cmtFrmElem.ctnt.value;
+            if(cmtVal.length === 0){
+                alert('댓글내용을 작성해주세요');
+            }else if(regex.isWrongWith('ctnt', cmtVal)){
+                alert(regex.msg.ctnt);
+            }else{
+                insBoardCmtAjax(cmtVal);
+            }
+        });
+
+        const insBoardCmtAjax = (val) =>{
+            const param = {
+                'iboard': dataElem.dataset.iboard,
+                'ctnt': val
+            };
+            myFetch.post('/board/cmt', (data) =>{
+                console.log(data);
+            }, param);
+        }
+    }
 }
+
+// Restful API = POST, GET(2개), PUT, DELETE

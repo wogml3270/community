@@ -16,14 +16,13 @@
         idChkState = data.result; // 0 or 1
         console.log(idChkState);
         switch (data.result) {
-            case 1:
-                idChkMsg.innerHTML = `<div style="color: deepskyblue">사용할 수 있는 아이디입니다.</div>`;
-                idChkState = 1;
-                break;
             case 0:
-                alert('중복된 아이디입니다!!');
-                idChkMsg.innerHTML = `<div style="color: red">이미 사용중인 아이디입니다.</div>`;
+                idChkMsg.innerHTML = `<div style="color: red; font-weight: bold;">이미 사용중인 아이디입니다.</div>`;
                 idChkState = 0;
+                break;
+            case 1:
+                idChkMsg.innerHTML = `<div style="color: deepskyblue; font-weight: bold;">사용할 수 있는 아이디입니다.</div>`;
+                idChkState = 1;
                 break;
         }
     }
@@ -34,7 +33,7 @@
             const upw = joinFrmElem.upw.value;
             const nm = joinFrmElem.nm.value;
             const upwChk = joinFrmElem.upwChk.value;
-            const gender = joinFrmElem.gender;
+            // const gender = joinFrmElem.gender.checked;
             if (!idRegex.test(uid)) {
                 alert(msg1);
                 e.preventDefault();
@@ -46,9 +45,6 @@
                 e.preventDefault();
             } else if (upw !== upwChk) {
                 alert(msg4);
-                e.preventDefault();
-            }else if(gender === null){
-                alert(msg5);
                 e.preventDefault();
             }
             if (idChkState !== 1) {
@@ -76,18 +72,20 @@
             if (idVal.length < 4) {
                 alert('아이디는 최소 4자 이상입니다.');
                 return;
-            }
-            if (!idRegex.test(idVal)) {
+            }else if (!idRegex.test(idVal)) {
                 alert(msg1);
                 return;
             }
-            fetch(`/user/idChk/${idVal}`) // `` : 문자열 안에 변수값을 넣기 편하다
-                .then(res => res.json())
-                .then((data) => {
-                    setIdChkMsg(data);
-                }).catch((e) => {
-                console.log(e);
-            })
+            // fetch(`/user/idChk/${idVal}`) // `` : 문자열 안에 변수값을 넣기 편하다
+            //     .then(res => res.json())
+            //     .then((data) => {
+            //         setIdChkMsg(data);
+            //     }).catch((e) => {
+            //     console.log(e);
+            // })
+            myFetch.get(`/user/idChk/${idVal}`, (data) =>{
+                setIdChkMsg(data);
+            });
         });
     }
 }
