@@ -13,6 +13,7 @@ import java.util.Objects;
 
 @Service
 public class BoardService {
+
     @Autowired
     private BoardMapper mapper;
 
@@ -27,7 +28,6 @@ public class BoardService {
     public List<BoardVO> selBoardList(BoardDTO dto){
         return mapper.selBoardList(dto);
     }
-
     public BoardVO selBoard(BoardDTO dto){ // iboard, lastip
         BoardVO detail = mapper.selBoard(dto);
         if(dto.getLastip() != null && !Objects.equals(dto.getLastip(), detail.getLastip())){
@@ -38,6 +38,10 @@ public class BoardService {
         }
         return detail;
     }
+    public BoardPrevNextVO selPrevNext(BoardVO vo){
+        return mapper.selPrevNext(vo);
+    }
+
     public int updBoard(BoardEntity entity){
         try{
             entity.setIuser(userUtils.getLoginUserPk());
@@ -47,12 +51,10 @@ public class BoardService {
             return 2;
         }
     }
+
     public int delBoard(BoardEntity entity){ // icategory, iboard
         entity.setIuser(userUtils.getLoginUserPk());
         entity.setIsdel(1);
         return mapper.updBoard(entity); // icategory, iboard, iuser, isdel
-    }
-    public BoardPrevNextVO selPrevNext(BoardVO vo){
-        return mapper.selPrevNext(vo);
     }
 }

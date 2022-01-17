@@ -11,6 +11,6 @@ public interface BoardMapper {
     List<BoardVO> selBoardList(BoardDTO dto);
     BoardVO selBoard(BoardDTO dto);
     BoardPrevNextVO selPrevNext(BoardVO vo);
-    int addHits(BoardDTO dto);
+    int addHits(BoardEntity dto);
     int updBoard(BoardEntity dto);
 }
