@@ -41,5 +41,11 @@ const myFetch = {
             'headers': { 'Content-Type': 'application/json'},
             'body': JSON.stringify(param) // stringify: json을 문자로, 문자를 json으로 변환
         }), cb);
+    },
+    delete: function(url, cb){
+        return this.send(fetch(url, {
+            'method': 'delete',
+            'headers': { 'Content-Type': 'application/json' },
+        }), cb);
     }
 }

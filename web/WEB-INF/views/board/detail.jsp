@@ -9,7 +9,10 @@
         <button id="delBtn">삭제</button>
     </div>
 </c:if>
-    <div id="data" data-icategory="${data.icategory}" data-iboard="${data.iboard}"></div>
+    <div id="data"
+         data-icategory="${data.icategory}"
+         data-iboard="${data.iboard}"
+         data-iuser="${sessionScope.loginUser.iuser}"></div>
     <div>카테고리: ${data.categorynm}</div>
     <div>조회수: ${data.hits}</div>
     <div>등록일시: ${data.rdt}</div>
@@ -33,20 +36,5 @@
             </form>
         </div>
     </c:if>
-    <div class="m-t-20">comment list</div>
-    <table>
-        <c:forEach items="${requestScope.list}" var="item">
-            <tr class="record" data-iboard="${item.icmt}">
-                <td>${item.iboard}</td>
-                <td><c:out value="${item.ctnt}"/></td>
-                <td>${item.hits}</td>
-                <td><my:profileImg idVal="profile_view"
-                                   classVal="circular_img size30"
-                                   iuser="${item.iuser}"
-                                   profileImgVal="${item.profileimg}"/>
-                        ${item.writernm}</td>
-                <td>${item.rdt}</td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="m-t-20" id="cmt_list"></div>
 </div>

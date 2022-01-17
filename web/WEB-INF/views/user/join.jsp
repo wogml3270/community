@@ -17,8 +17,8 @@
             <label>여성 <input type="radio" name="gender" value="2"></label>
         </div>
         <div>
-            <input type="submit" value="JOIN">
-            <input type="reset" value="RESET">
+            <input type="submit" value="가입하기">
+            <input type="reset" value="초기화">
         </div>
     </form>
 </div>

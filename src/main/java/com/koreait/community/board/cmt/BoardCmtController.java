@@ -23,9 +23,12 @@ public class BoardCmtController {
     }
     @GetMapping(value="/{iboard}")
     public List<BoardCmtVO> selBoardCmtList(@PathVariable int iboard){
-        System.out.println("iboard : " + iboard);
-        BoardCmtEntity entity = new BoardCmtEntity();
-        entity.setIboard(iboard);
-        return service.selBoardCmtList(entity);
+        return service.selBoardCmtList(iboard);
+    }
+    @DeleteMapping(value="/{icmt}")
+    public Map<String, Integer> delBoardCmt(@PathVariable int icmt){
+        Map<String, Integer> result = new HashMap<>();
+        result.put("result", service.delBoardCmt(icmt));
+        return result;
     }
 }

@@ -33,7 +33,7 @@
             const upw = joinFrmElem.upw.value;
             const nm = joinFrmElem.nm.value;
             const upwChk = joinFrmElem.upwChk.value;
-            // const gender = joinFrmElem.gender.checked;
+            // const gender = joinFrmElem.gender;
             if (!idRegex.test(uid)) {
                 alert(msg1);
                 e.preventDefault();

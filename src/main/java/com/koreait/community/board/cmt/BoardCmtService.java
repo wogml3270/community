@@ -11,15 +11,24 @@ import java.util.List;
 @Service
 public class BoardCmtService {
 
-    @Autowired private UserUtils userutils;
+    @Autowired private UserUtils userUtils;
     @Autowired private BoardCmtMapper mapper;
 
     public int insBoardCmt(BoardCmtEntity entity){
-        entity.setIuser(userutils.getLoginUserPk());
+        entity.setIuser(userUtils.getLoginUserPk());
         return mapper.insBoardCmt(entity);
     }
 
-    public List<BoardCmtVO> selBoardCmtList(BoardCmtEntity entity){
+    public List<BoardCmtVO> selBoardCmtList(int iboard){
+        BoardCmtEntity entity = new BoardCmtEntity();
+        entity.setIboard(iboard);
         return mapper.selBoardCmtList(entity);
+    }
+
+    public int delBoardCmt(int icmt){
+        BoardCmtEntity entity = new BoardCmtEntity();
+        entity.setIcmt(icmt);
+        entity.setIuser(userUtils.getLoginUserPk());
+        return mapper.delBoardCmt(entity);
     }
 }

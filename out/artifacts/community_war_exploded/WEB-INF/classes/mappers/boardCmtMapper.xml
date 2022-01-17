@@ -15,4 +15,10 @@
         ORDER BY A.icmt
     </select>
 
+    <update id="delBoardCmt">
+        DELETE FROM t_board_cmt
+        WHERE icmt = ${icmt}
+        AND iuser = ${iuser}
+    </update>
+
 </mapper>

@@ -28,7 +28,7 @@
     if(cmtFrmElem){ // true: 로그인 한 상태
 
         // input-text ctnt에서 enter 치면 submit 날아가기 때문에 막는다
-        cmtFrmElem.addEventListener('submit', (e)=>{
+        cmtFrmElem.addEventListener('submit', (e) =>{
             e.preventDefault();
         });
 
@@ -53,6 +53,84 @@
             }, param);
         }
     }
+    // 댓글 리스트(cmt list)
+    const cmtListElem = document.querySelector('#cmt_list');
+        // 통신 시작
+        const getCmtList = () =>{
+            const iboard = dataElem.dataset.iboard;
+            myFetch.get(`/board/cmt/${iboard}`, setCmtList)
+        }
+
+        // 통신 결과물 세팅
+        const setCmtList = (list) =>{
+            // 댓글이 없으면 "댓글 없음"
+            if(list.length === 0){
+                cmtListElem.innerHTML = `<strong style="color:#fc0000;">작성된 댓글 없습니다.</strong>`
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>no</th>
+                    <th>content</th>
+                    <th>writer</th>
+                    <th></th>
+                 </tr>
+            `;
+            list.forEach(item =>{
+                const tr = document.createElement('tr');
+
+                const imgSrc = item.profileimg === null
+                    ? '/res/img/defaultProfile.png'
+                    : `/images/user/${item.iuser}/${item.profileimg}`;
+
+                tr.innerHTML = `
+                    <td>${item.icmt}</td>
+                    <td>${item.ctnt}</td>
+                    <td>
+                        <span>${item.writernm}</span>
+                        <div class="circular_img size30">
+                            <img src="${imgSrc}" onerror="this.style.display = 'none';">
+                        </div>
+                    </td>
+                `;
+                const td = document.createElement('td');
+                tr.appendChild(td);
+
+                if(parseInt(dataElem.dataset.iuser) === item.iuser) {
+                    const modBtn = document.createElement('input');
+                    modBtn.type = 'button';
+                    modBtn.value = '수정';
+
+                    const delBtn = document.createElement('input');
+                    delBtn.type = 'button';
+                    delBtn.value = '삭제';
+
+                    delBtn.addEventListener('click', () =>{
+                        if(confirm('댓글을 삭제하시겠습니까?')){
+                            delCmt(item.icmt, tr);
+                        }
+                    });
+
+                    td.appendChild(modBtn);
+                    td.appendChild(delBtn);
+                }
+                table.appendChild(tr);
+            });
+            cmtListElem.appendChild(table);
+        }
+
+        const delCmt = (icmt, tr) =>{
+            myFetch.delete(`/board/cmt/${icmt}`, (data) =>{
+                if(data.result){
+                    tr.remove();
+                } else{
+                    alert('댓글을 삭제할 수 없습니다.');
+                }
+            });
+        }
+        getCmtList();
 }
 
 // Restful API = POST, GET(2개), PUT, DELETE

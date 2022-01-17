@@ -10,4 +10,5 @@ import java.util.List;
 public interface BoardCmtMapper {
     int insBoardCmt(BoardCmtEntity entity);
     List<BoardCmtVO> selBoardCmtList(BoardCmtEntity entity);
+    int delBoardCmt(BoardCmtEntity entity);
 }
