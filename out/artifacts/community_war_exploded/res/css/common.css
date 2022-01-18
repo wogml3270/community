@@ -14,6 +14,18 @@ th, td { padding: 7px; }
 
 #container { min-height: 100%; display: grid; grid-template-rows: 100px 1fr 30px; }
 
+.color-white { color: #ffffff; }
+.color-black { color: #000000; }
+.color-gray { color: #808080; }
+.color-silver { color: #c0c0c0; }
+.color-light-gray { color: #cccccc; }
+.color-red { color: #ff0000; }
+.color-yellow { color: #fff000; }
+.color-blue { color: #000fff; }
+.color-sky { color: #00ffff; }
+.color-green { color: #008000; }
+.color-lime { color: #00ff00; }
+.color-olive { color: #808000; }
 .circular_img { display: inline-block; overflow: hidden; border-radius: 50%; border: 1px solid #ffffff; position: relative; }
 .circular_img img { width: 105%; height: 105%; object-fit: cover; }
 .circular_change:hover{ opacity: 0.75; transition: 0.3s; }
@@ -31,8 +43,6 @@ th, td { padding: 7px; }
 .flex-center { justify-content: center; align-items: center; }
 .flex-container { display: flex; height: 100%; width: 100%; }
 .flex-direction-column { flex-direction: column; }
-
-.font-color-white { color: #fff; }
 
 .h-50 { height: 50px; }
 .h-100 { height: 100px; }
@@ -59,13 +69,35 @@ th, td { padding: 7px; }
 .m-l-10 { margin-left: 10px; }
 .m-l-20 { margin-left: 20px; }
 .m-l-30 { margin-left: 30px; }
+.m-lr-10 { margin: 0 10px; }
+.m-lr-20 { margin: 0 20px; }
+.m-lr-30 { margin: 0 30px; }
+.m-tb-10 { margin: 10px 0; }
+.m-tb-20 { margin: 20px 0; }
+.m-tb-20 { margin: 30px 0; }
 
 .p-10 { padding: 10px; }
 .p-20 { padding: 20px; }
 .p-30 { padding: 30px; }
+.p-t-10 { padding-top: 10px; }
+.p-t-20 { padding-top: 20px; }
+.p-t-30 { padding-top: 30px; }
+.p-r-10 { padding-right: 10px; }
+.p-r-20 { padding-right: 20px; }
+.p-r-30 { padding-right: 30px; }
+.p-b-10 { padding-bottom: 10px; }
+.p-b-20 { padding-bottom: 20px; }
+.p-b-30 { padding-bottom: 30px; }
+.p-l-10 { padding-left: 10px; }
+.p-l-20 { padding-left: 20px; }
+.p-l-30 { padding-left: 30px; }
 .p-lr-10 { padding: 0 10px; }
 .p-lr-20 { padding: 0 20px; }
-.p-lr-20 { padding: 0 30px; }
+.p-lr-30 { padding: 0 30px; }
+.p-tb-10 { padding: 10px 0; }
+.p-tb-20 { padding: 20px 0; }
+.p-tb-30 { padding: 30px 0; }
+
 .pointer { cursor: pointer; }
 
 .submenu_section{ display: grid; grid-template-columns: 200px 1fr; height: 100%; background-color: #efefef; }

@@ -141,6 +141,36 @@
             const modBtn = document.createElement('input');
             modBtn.type = 'button';
             modBtn.value = '수정';
+            modBtn.addEventListener('click', () =>{
+                const tdArr = tr.querySelectorAll('td');
+                const tdCell = tdArr[1];
+
+                const input = document.createElement('input');
+                const saveBtn = document.createElement('input');
+                input.type = 'text';
+                input.value = item.ctnt;
+                saveBtn.type = 'button';
+                saveBtn.value = '저장';
+
+                tdCell.innerHTML = null;
+                tdCell.appendChild(input);
+                tdCell.appendChild(saveBtn);
+
+                const cancelBtn = document.createElement('input');
+                cancelBtn.type = 'button';
+                cancelBtn.value = '취소';
+                cancelBtn.addEventListener('click', () =>{
+                    tdCell.innerHTML = item.ctnt;
+                    modBtn.classList.toggle('hidden');
+                    delBtn.classList.toggle('hidden');
+                    cancelBtn.remove();
+                });
+
+
+                td.insertBefore(cancelBtn, delBtn);
+                modBtn.classList.toggle('hidden');
+                delBtn.classList.toggle('hidden');
+            });
 
             const delBtn = document.createElement('input');
             delBtn.type = 'button';
@@ -162,7 +192,7 @@
         myFetch.delete(`/board/cmt/${icmt}`, data => {
             if(data.result) {
                 tr.remove();
-                // 만약 댓글이 하나도 없다면
+                // (하나 남은 댓글마저 다 삭제할 시) 만약 댓글이 하나도 없다면 '작성된 댓글이 없습니다.' 출력
                 if(getTrLen() === 1){
                     const cmtListElem = document.querySelector('#cmt_list');
                     cmtListElem.innerHTML = `<strong style="color:#fc0000;">작성된 댓글이 없습니다.</strong>`;

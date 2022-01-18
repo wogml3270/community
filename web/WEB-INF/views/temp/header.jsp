@@ -16,7 +16,7 @@
     <div class="flex-container flex-align-center p-lr-20">
         <c:choose>
             <c:when test="${sessionScope.loginUser == null}">
-                <div class="m-r-20"><a href="/user/login" class="font-color-white">로그인</a></div>
+                <div class="m-r-20"><a href="/user/login" class="color-white">로그인</a></div>
             </c:when>
             <c:otherwise>
                 <div class="m-r-20">
@@ -27,12 +27,12 @@
                                        profileImgVal="${sessionScope.loginUser.profileimg}"/>
                     </a>
                 </div>
-                <div class="m-r-20"><a href="/user/logout" class="font-color-white">로그아웃</a></div>
+                <div class="m-r-20"><a href="/user/logout" class="color-white">로그아웃</a></div>
             </c:otherwise>
         </c:choose>
         <c:forEach items="${menuList}" var="item">
             <div class="m-r-30 ${lastPath == ''.concat(item.icategory) ? 'menu-selected' : ''}">
-                <a href="/board/list/${item.icategory}" class="font-color-white">${item.nm}</a>
+                <a href="/board/list/${item.icategory}" class="color-white">${item.nm}</a>
             </div>
         </c:forEach>
     </div>
